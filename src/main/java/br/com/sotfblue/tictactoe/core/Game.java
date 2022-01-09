@@ -10,7 +10,9 @@ public class Game {
 	
 	public void play() {
 		UI.printGameTitle();
+
+		board.print();
 		
-		UI.readInput("Nome do Jogador:");
+		//UI.readInput("Nome do Jogador:");
 	}
 }
