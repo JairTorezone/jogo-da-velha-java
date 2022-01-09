@@ -1,6 +1,7 @@
 package br.com.sotfblue.tictactoe.core;
 
 import br.com.sotfblue.tictactoe.Constants;
+import br.com.sotfblue.tictactoe.ui.UI;
 
 public class Game {
 
@@ -8,6 +9,8 @@ public class Game {
 	Player[] players = new Player[Constants.SYMBOL_PLAYERS.length];
 	
 	public void play() {
-		System.out.println("Jogando...");
+		UI.printGameTitle();
+		
+		UI.readInput("Nome do Jogador:");
 	}
 }
