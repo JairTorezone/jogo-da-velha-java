@@ -64,9 +64,6 @@ public class Board {
 		return matrix;
 	}
 
-	public void setMatrix(char[][] matrix) {
-		this.matrix = matrix;
-	}
 	
 	
 }
