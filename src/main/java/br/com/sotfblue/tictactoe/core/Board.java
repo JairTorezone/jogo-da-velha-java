@@ -132,4 +132,9 @@ public class Board {
 		return matrix;
 	}
 
+<<<<<<< HEAD
+=======
+	
+	
+>>>>>>> 0b0fb347a8c073597d934c3225f6a6014920233f
 }
