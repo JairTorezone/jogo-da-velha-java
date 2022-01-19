@@ -8,8 +8,7 @@ public class Main {
 		
 		Game game = new Game();
 		game.play();
-		
-		//proxima aula 4.3 e fazer commit
+	
 	}
 
 }
