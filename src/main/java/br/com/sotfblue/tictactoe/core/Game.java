@@ -25,8 +25,15 @@ public class Game {
 
 		while (!gameEnded) {
 			board.print();
+			boolean sequenceFound = false;
 
-			boolean sequenceFound = currentPlayer.play();
+			try {
+				sequenceFound = currentPlayer.play();
+				
+			} catch (InvalidMoveException e) {
+				System.out.println("Error: " + e.getMessage());
+				continue;
+			}
 			
 			//Verificar se tem ganhador
 			if (sequenceFound) {
@@ -41,6 +48,8 @@ public class Game {
 			} else {
 				currentPlayer = nextPlayer();
 			}
+			
+		
 		}
 		
 		if(winner == null) {
