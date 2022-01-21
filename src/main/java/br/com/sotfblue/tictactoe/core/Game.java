@@ -16,7 +16,6 @@ public class Game {
 
 		for (int i = 0; i < players.length; i++) {
 			players[i] = createPlayer(i);
-			System.out.println();
 		}
 
 		boolean gameEnded = false;
