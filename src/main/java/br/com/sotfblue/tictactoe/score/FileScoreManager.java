@@ -1,11 +1,13 @@
 package br.com.sotfblue.tictactoe.score;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import br.com.sotfblue.tictactoe.core.Player;
 
@@ -27,23 +29,38 @@ public class FileScoreManager implements ScoreManager{
 			String line;
 			
 			while((line = reader.readLine()) != null) {
-				String[] fildes = line.split("\\|");
+				String[] fields = line.split("\\|");
 				
-				scoreMap.put(fildes[0], Integer.parseInt(fildes[1]));
+				scoreMap.put(fields[0], Integer.parseInt(fields[1]));
 			}
 		}
 	}
 
 	@Override
 	public Integer getScore(Player player) {
-		// TODO Auto-generated method stub
-		return null;
+		return scoreMap.get(player.getName().toUpperCase());
 	}
 
 	@Override
-	public void saveScore(Player player) {
-		// TODO Auto-generated method stub
+	public void saveScore(Player player) throws IOException {
+		Integer score = getScore(player);
 		
+		if(score == null) {
+			score = 0;
+		}
+		
+		scoreMap.put(player.getName().toUpperCase(), score + 1);
+		
+		try(BufferedWriter writer = Files.newBufferedWriter(SCORE_FILE)){
+			Set<Map.Entry<String, Integer>> entries = scoreMap.entrySet();
+			
+			for(Map.Entry<String, Integer> entry: entries) {
+				String name = entry.getKey().toUpperCase();
+				Integer s = entry.getValue();
+				writer.write(name + "|" + s);
+				writer.newLine();
+			}
+		}
 	}
 
 
